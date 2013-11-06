@@ -1,0 +1,45 @@
+#######################################
+# Syntax Coloring Map For PCF8814
+#######################################
+
+#######################################
+# Class
+#######################################
+
+PCF8814	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+Init	KEYWORD2
+Clear	KEYWORD2
+SendByte	KEYWORD2
+Mirror	KEYWORD2
+Contrast	KEYWORD2
+Putc	KEYWORD2
+PutcWide	KEYWORD2
+Print	KEYWORD2
+PrintF	KEYWORD2
+PrintWide	KEYWORD2
+GotoXY	KEYWORD2
+Inverse	KEYWORD2
+Pixe	KEYWORD2
+Line	KEYWORD2
+Circle	KEYWORD2
+Rect	KEYWORD2
+Pict	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+####################################### 
+
+PIXEL_ON	LITERAL1
+PIXEL_OFF	LITERAL1
+PIXEL_INV	LITERAL1
+FILL_OFF	LITERAL1
+FILL_ON	LITERAL1
+INV_MODE_ON	LITERAL1
+INV_MODE_OFF	LITERAL1
+ON	LITERAL1
+OFF	LITERAL1
