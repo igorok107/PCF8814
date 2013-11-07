@@ -1,6 +1,6 @@
 #include <PCF8814.h> 
 
-PCF8814 Lcd(7,8,9,6); // LCD set SCLK: 7 pin, SDA: 8 pin, CS: 10 pin, RESET: 6 pin
+PCF8814 Lcd(13,11,10,6); // LCD sets SPI SCLK: 7 pin, SDA: 8 pin, CS: 9 pin. RESET: 6 pin
 
 void setup() { 
   Lcd.Init();
