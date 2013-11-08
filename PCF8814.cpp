@@ -20,7 +20,9 @@ static uint8_t lcd_xcurr, lcd_ycurr;
 
 // Порты к которым подключен дисплей в нумерации Arduino
 volatile uint8_t LCD_SCLK, LCD_SDA, LCD_CS, LCD_RST;
-
+#ifndef SOFT_SPI
+	const uint8_t SPI_DELAY[] = {1,2,5,10,1,1,2}; //Задержка для первого бита
+#endif
 
 PCF8814::PCF8814(uint8_t _LCD_SCLK, uint8_t _LCD_SDA, uint8_t _LCD_CS, uint8_t _LCD_RST)
 {
@@ -74,8 +76,15 @@ void PCF8814::SendByte(char mode,unsigned char c)
 		SDA_LCD_SET;
 	}
 	else SDA_LCD_RESET;
+	
 	SCLK_LCD_SET;
+	#ifndef SOFT_SPI		
+		delayMicroseconds(SPI_DELAY[SPI_CLOCK_DIV]);
+	#else
+		delayMicroseconds(LCD_MIN_DELAY/2);
+	#endif
 	SCLK_LCD_RESET;
+		
 	#ifdef SOFT_SPI
 		uint8_t i;
 		for(i=0;i<8;i++)
@@ -115,6 +124,7 @@ void PCF8814::Init(void)
 	SendByte(CMD_LCD_MODE,0xEF); // *** FRAME FREQUENCY:
 	SendByte(CMD_LCD_MODE,0x04); // *** 80Hz
 	SendByte(CMD_LCD_MODE,0xD0); // *** 1:65 divider
+	SendByte(CMD_LCD_MODE,0xEB); // Включить температурную компенсацию
 	SendByte(CMD_LCD_MODE,0x20); // Запись в регистр Vop
 	SendByte(CMD_LCD_MODE,0x85); // Определяет контрастность
 	SendByte(CMD_LCD_MODE,0xA4); // all on/normal display

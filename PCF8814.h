@@ -38,12 +38,12 @@
 	#define CS_LCD_RESET    digitalWrite(LCD_CS,LOW)
 #else
 	#define SPI_CLOCK_DIV	0x01 // Делитель SPI, определяет скорость. Значения [0-6] = Fosc/[4,16,64,128,2,8,32]
-	#define SCLK_LCD_SET	PORTB |= _BV(PB5)
-	#define SDA_LCD_SET 	PORTB |= _BV(PB3)
-	#define CS_LCD_SET		PORTB |= _BV(PB2)
-	#define SCLK_LCD_RESET	PORTB &= ~_BV(PB5)
-	#define SDA_LCD_RESET	PORTB &= ~_BV(PB3)
-	#define CS_LCD_RESET	PORTB &= ~_BV(PB2)
+	#define SCLK_LCD_SET	PORTB |= digitalPinToBitMask(SCK)
+	#define SDA_LCD_SET 	PORTB |= digitalPinToBitMask(MOSI)
+	#define CS_LCD_SET		PORTB |= digitalPinToBitMask(SS)
+	#define SCLK_LCD_RESET	PORTB &= ~digitalPinToBitMask(SCK)
+	#define SDA_LCD_RESET	PORTB &= ~digitalPinToBitMask(MOSI)
+	#define CS_LCD_RESET	PORTB &= ~digitalPinToBitMask(SS)
 #endif
 
 // Макросы для работы с битами
