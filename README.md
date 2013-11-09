@@ -4,6 +4,8 @@ PCF8814
 LCD PCF8814 library for arduino
 -------------------------------
 
+![alt text](http://digitalchip.ru/uploads/2012/05/nokia1202_test2-550x464.jpg)
+
 ###Init();###
 >Инициализация контроллера PCF8814, очистка экрана.
 
